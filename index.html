@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grace Idea - Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-main: #2c3e50;
+            --accent-color: #3498db;
+            --border-color: #e2e8f0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 800px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        h1 { margin-bottom: 10px; }
+        
+        /* Category Tabs Setup */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+        .tab-btn {
+            background: none;
+            border: none;
+            font-size: 18px;
+            font-weight: 600;
+            color: #7f8c8d;
+            cursor: pointer;
+            padding: 10px 20px;
+            transition: all 0.2s ease;
+        }
+        .tab-btn:hover { color: var(--accent-color); }
+        .tab-btn.active {
+            color: var(--accent-color);
+            border-bottom: 3px solid var(--accent-color);
+            margin-bottom: -13px;
+        }
+
+        /* Content Grid */
+        .content-section { display: none; }
+        .content-section.active {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: transform 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-color);
+        }
+        .card h3 {
+            margin: 0 0 8px 0;
+            color: var(--accent-color);
+        }
+        .card p { margin: 0; color: #57606a; font-size: 14px; }
+        .badge {
+            display: inline-block;
+            background: #e1ecf4;
+            color: #39739d;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Grace Idea</h1>
+        <p>Research, Projects, and Theological Summaries</p>
+    </header>
+
+    <!-- Category Filter Menu -->
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('projects')">💻 Projects</button>
+        <button class="tab-btn" onclick="switchTab('books')">📚 Books</button>
+    </div>
+
+    <!-- Category 1: Projects Section -->
+    <div id="projects" class="content-section active">
+        <a href="https://github.com" class="card" target="_blank">
+            <h3>surfaceModels</h3>
+            <p>3D Surface modeling tools and mathematical implementations.</p>
+            <span class="badge">Python</span>
+        </a>
+        <a href="https://github.com" class="card" target="_blank">
+            <h3>pytorch3dSurfaceMesh2Volume</h3>
+            <p>Volumetric conversion pipelines using PyTorch3D frameworks.</p>
+            <span class="badge">Python / PyTorch</span>
+        </a>
+        <a href="https://github.com" class="card" target="_blank">
+            <h3>pytorch3dMesh</h3>
+            <p>Mesh structural data extraction and manipulation libraries.</p>
+            <span class="badge">Python</span>
+        </a>
+    </div>
+
+    <!-- Category 2: Books Section -->
+    <div id="books" class="content-section">
+        <a href="https://github.io" class="card" target="_blank">
+            <h3>bibleZongJieNewTestment (新約聖經總結)</h3>
+            <p>A comprehensive structured study summary covering the New Testament Gospels.</p>
+            <span class="badge">LaTeX / PDF Book</span>
+        </a>
+        <a href="https://github.com" class="card" target="_blank">
+            <h3>bibleAdultFuYinBan</h3>
+            <p>Adult Gospel learning material and structural lecture documentation notes.</p>
+            <span class="badge">LaTeX Source</span>
+        </a>
+        <a href="https://github.com" class="card" target="_blank">
+            <h3>sundaySchoolPresentation</h3>
+            <p>Presentation graphics templates and reference materials compiled via TeX.</p>
+            <span class="badge">LaTeX / TeX</span>
+        </a>
+    </div>
+</div>
+
+<script>
+    function switchTab(tabId) {
+        // Remove active class from all buttons and sections
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+        
+        // Add active status to targeted elements
+        event.currentTarget.classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+    }
+</script>
+
+</body>
+</html>
